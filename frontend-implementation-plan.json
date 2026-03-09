@@ -1,0 +1,57 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Client-side audio genre classification using TensorFlow.js (no backend required)",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "summary": "Replace backend API call with client-side TensorFlow.js genre classification pipeline using Web Audio API for feature extraction",
+      "acceptanceCriteria": [
+        "No HTTP request is made to any backend or external prediction API when the user uploads an audio file.",
+        "Audio decoding and feature extraction run entirely in the browser using the Web Audio API.",
+        "A TensorFlow.js model is loaded client-side and produces genre prediction results.",
+        "The predicted genre label and confidence scores for all genres are displayed after inference.",
+        "The existing loading state and animated confidence bar UI (ConfidenceChart) are preserved and driven by the client-side inference result.",
+        "The app works as a fully static frontend with no backend canister calls for audio processing."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/audioFeatureExtractor.ts",
+          "operation": "create",
+          "description": "Create a utility module that uses the Web Audio API (AudioContext) to decode uploaded audio files and extract MFCC and spectral features required for genre classification. Export a function that accepts a File object, decodes it to an AudioBuffer, and returns a typed feature array suitable for TensorFlow.js model input."
+        },
+        {
+          "path": "frontend/src/utils/genreModel.ts",
+          "operation": "create",
+          "description": "Create a TensorFlow.js model loader and inference utility. Export functions to load a pre-trained GTZAN-style genre classification model (either from a public CDN or bundled weights), run inference on extracted audio features, and return predicted genre labels with per-genre confidence scores. Include the genre label mapping (rock, pop, classical, jazz, etc.)."
+        },
+        {
+          "path": "frontend/src/pages/GenreClassifier.tsx",
+          "operation": "modify",
+          "description": "Replace the existing Flask backend API call with a client-side classification pipeline. When a file is uploaded, call the audioFeatureExtractor to decode and extract features from the audio file in the browser, then pass those features to the genreModel inference function to get predictions. Update the state with the predicted genre and confidence scores. Remove the fetch call to the backend API. Preserve the existing loading state, error handling, and ConfidenceChart rendering logic."
+        },
+        {
+          "path": "frontend/package.json",
+          "operation": "modify",
+          "description": "Add @tensorflow/tfjs as a dependency to enable client-side machine learning inference in the browser."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Remove ICP backend actor dependency from GenreClassifier so audio classification runs entirely client-side",
+      "acceptanceCriteria": [
+        "GenreClassifier.tsx does not import or invoke useActor for prediction purposes.",
+        "No canister actor call is made during the audio upload and classification flow.",
+        "The page renders and functions correctly without a live backend canister."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/GenreClassifier.tsx",
+          "operation": "modify",
+          "description": "Remove any import or usage of the useActor hook related to prediction. Ensure the audio upload, feature extraction, inference, and result display flow is fully self-contained in the frontend without any canister actor calls."
+        }
+      ]
+    }
+  ]
+}

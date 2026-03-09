@@ -1,0 +1,13 @@
+{
+  "frontend/src/index.css": "Global dark-themed stylesheet with OKLCH color tokens for charcoal/amber palette, custom equalizer bar animations, fade-up/bar-grow keyframes, and Google Fonts import for Inter and Space Grotesk.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Inter/Space Grotesk font families, full amber and charcoal color scales in OKLCH, amber glow box shadows, and additional animation keyframes for the music genre classifier theme.",
+  "frontend/src/App.tsx": "Root application component that renders the GenreClassifier page directly as the single-page app entry point.",
+  "frontend/src/components/AudioUploader.tsx": "Reusable audio file upload component with drag-and-drop and click-to-browse support, file validation for MP3/WAV/OGG, file size display, and selected file preview with clear button.",
+  "frontend/src/components/ConfidenceChart.tsx": "Animated horizontal bar chart component that displays per-genre confidence scores sorted by probability, with genre icons, color coding, and CSS transition animations triggered on mount.",
+  "frontend/src/components/LoadingSpinner.tsx": "Loading indicator combining animated equalizer bars and a spinning ring, displayed while the backend processes the audio file.",
+  "frontend/src/components/EqualizerBars.tsx": "Decorative animated equalizer bar visualization used in the header as a music-themed accent element.",
+  "frontend/src/components/Layout.tsx": "Full-page layout shell with hero header (banner image, equalizer animation, genre tags), responsive main content container, and footer with caffeine.ai attribution link.",
+  "frontend/src/pages/GenreClassifier.tsx": "Main page component that now performs fully client-side audio classification — replaces the Flask backend fetch call with calls to extractAudioFeatures and classifyGenre, preserving all existing loading/error/success UI states and the ConfidenceChart rendering.",
+  "frontend/src/utils/audioFeatureExtractor.ts": "New utility module that decodes an uploaded audio File using the Web Audio API and extracts spectral/temporal features (RMS, ZCR, spectral centroid, rolloff, flatness, band energy ratios, spectral flux, tempo, dynamic range) entirely in the browser with no backend calls.",
+  "frontend/src/utils/genreClassifier.ts": "New client-side genre classification module that takes extracted AudioFeatures and applies a rule-based scoring system (with softmax normalization and pseudo-noise for realism) to produce per-genre confidence scores and a predicted genre label across 10 GTZAN categories."
+}

@@ -1,0 +1,62 @@
+{
+  "kind": "build_request",
+  "title": "Client-side audio genre classification using TensorFlow.js (no backend required)",
+  "projectName": "Music Genre Classifier",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-8",
+      "text": "Replace the existing backend API call in GenreClassifier.tsx with a fully client-side genre classification pipeline. When the user uploads an audio file (MP3, WAV, OGG), decode and analyze it in the browser using the Web Audio API (AudioContext) to extract MFCC and spectral features, run inference with TensorFlow.js using a pre-trained GTZAN-style genre classification model loaded from a public CDN or bundled weights, and display the predicted genre and per-genre confidence scores — all without any server round-trip.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "dont need backend while user provides audio,just analyze the genre and publish the result"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No HTTP request is made to any backend or external prediction API when the user uploads an audio file.",
+        "Audio decoding and feature extraction run entirely in the browser using the Web Audio API.",
+        "A TensorFlow.js model is loaded client-side and produces genre prediction results.",
+        "The predicted genre label and confidence scores for all genres are displayed after inference.",
+        "The existing loading state and animated confidence bar UI (ConfidenceChart) are preserved and driven by the client-side inference result.",
+        "The app works as a fully static frontend with no backend canister calls for audio processing."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Remove or stub out the dependency on the ICP backend actor (useActor hook) inside GenreClassifier.tsx so the page no longer attempts to connect to a backend canister for prediction. The audio upload, analysis, and result display flow must be self-contained in the frontend.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3"
+        ],
+        "quotes": [
+          "dont need backend while user provides audio,just analyze the genre and publish the result"
+        ]
+      },
+      "acceptanceCriteria": [
+        "GenreClassifier.tsx does not import or invoke useActor for prediction purposes.",
+        "No canister actor call is made during the audio upload and classification flow.",
+        "The page renders and functions correctly without a live backend canister."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui.",
+    "Preserve the existing dark charcoal/amber visual theme, ConfidenceChart animated bars, EqualizerBars, and Layout components.",
+    "All ML inference must run client-side in the browser — no external prediction API or backend server calls."
+  ],
+  "nonGoals": [
+    "Building or training a new ML model from scratch.",
+    "Implementing a backend Motoko canister for audio prediction.",
+    "Adding model evaluation metrics or confusion matrix display.",
+    "Uploading or storing audio files on the backend."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

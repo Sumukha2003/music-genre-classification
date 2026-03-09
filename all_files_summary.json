@@ -1,0 +1,22 @@
+{
+  "backend/main.mo": "Placeholder Motoko actor file with a comment noting the project uses a Python/Flask/PyTorch backend incompatible with Wasm/Motoko compilation.",
+  "feature_evidence.json": "Feature evidence report describing two implemented features: replacing the backend API call in GenreClassifier.tsx with a fully client-side TensorFlow.js classification pipeline, and removing the ICP backend actor dependency from the frontend.",
+  "frontend-file-summaries.txt": "JSON document containing one-sentence summaries of each frontend source file, serving as a reference index for the project's frontend architecture.",
+  "frontend/index.css": "Tailwind base CSS file defining OKLCH-based CSS custom properties for light and dark color themes including background, foreground, chart, and sidebar tokens.",
+  "frontend/index.html": "HTML entry point for the React app titled 'Music Genre Classifier' that mounts the app into a root div and loads the main TSX module.",
+  "frontend/src/App.tsx": "Root React component that renders the GenreClassifier page as the sole page of the single-page application.",
+  "frontend/src/components/AudioUploader.tsx": "Drag-and-drop audio file upload component supporting MP3/WAV/OGG with file validation, size display, and a selected-file preview with a clear button.",
+  "frontend/src/components/ConfidenceChart.tsx": "Animated horizontal bar chart that displays per-genre confidence scores sorted by probability, with genre-specific icons, colors, and CSS transition animations on mount.",
+  "frontend/src/components/EqualizerBars.tsx": "Decorative animated equalizer bar component used as a music-themed visual accent, rendering a configurable number of amber-colored bars with CSS animations.",
+  "frontend/src/components/Layout.tsx": "Full-page layout shell featuring a hero header with banner image, equalizer animation, genre tags, a responsive main content area, and a footer with a caffeine.ai attribution link.",
+  "frontend/src/components/LoadingSpinner.tsx": "Loading indicator component combining animated equalizer bars and a spinning ring, shown while audio is being analyzed with configurable size and label props.",
+  "frontend/src/hooks/useActor.ts": "React hook that creates and caches an ICP backend actor (authenticated or anonymous) using React Query, and invalidates dependent queries whenever the actor changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides an InternetIdentityProvider and useInternetIdentity hook for managing ICP Internet Identity authentication state, including login, logout, and identity persistence via AuthClient.",
+  "frontend/src/index.css": "Global stylesheet that imports fonts, configures a dark charcoal/amber Tailwind CSS theme via CSS variables, and defines custom utility classes and keyframe animations (equalizer bars, fade-up, bar-grow).",
+  "frontend/src/main.tsx": "Application entry point that renders the React app wrapped in QueryClientProvider and InternetIdentityProvider.",
+  "frontend/src/pages/GenreClassifier.tsx": "Page component that accepts audio file uploads, runs client-side feature extraction and genre classification, and displays the predicted genre with confidence scores and a chart.",
+  "frontend/src/utils/audioFeatureExtractor.ts": "Extracts spectral and temporal audio features (RMS, ZCR, spectral centroid, rolloff, flux, band energy ratios, tempo, dynamic range, flatness) from an audio file using the Web Audio API and a manual DFT implementation.",
+  "frontend/src/utils/genreClassifier.ts": "Rule-based genre classifier that scores audio against 10 GTZAN genres using extracted acoustic features, applies softmax normalization, and returns the predicted genre with per-genre confidence scores.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration for the frontend, extending the default theme with custom fonts (Inter, Space Grotesk), oklch-based color tokens for UI components, and custom amber/charcoal palettes. Enables dark mode, typography, container queries, and animation plugins.",
+  "project_state.json": "Tracks the project state (version 5) for a client-side Music Genre Classification web app, documenting existing features, architectural notes (no backend, all ML inference runs in-browser via TensorFlow.js/Web Audio API), and feature implementation history."
+}

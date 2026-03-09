@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Music Genre Classification web application where audio analysis runs entirely in the frontend (no backend required). Users upload audio files and genre classification is performed client-side using a JS/WASM ML model, displaying the predicted genre and confidence scores. Runs as a static web app.",
+  "architectural_notes": [
+    "No backend required — all audio feature extraction and ML inference runs client-side in the browser (TensorFlow.js or ONNX.js)"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-build-a-react-frontend-with-an-audio-file-upload-interface-the-ui-must-allow-users-to-select-and-upload-an-audio-file-mp3-wav-ogg-display-a-loading-state-during-prediction-and-show-the-predicted-genre-result-along-with-confidence-scores-for-all-genres-connect-the-upload-form-to-the-backend-prediction-api-endpoint",
+      "title": "Build a React frontend with an audio file upload interface. The UI must allow users to select and upload an audio file (MP3, WAV, OGG), display a loading state during prediction, and show the predicted genre result along with confidence scores for all genres. Connect the upload form to the backend prediction API endpoint.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-bold-dark-themed-visual-design-to-the-frontend-use-a-dark-charcoal-near-black-background-vivid-amber-gold-accent-color-for-interactive-elements-and-genre-result-highlights-clean-sans-serif-typography-and-audio-waveform-or-equalizer-inspired-decorative-elements-the-layout-must-be-responsive-and-centered-with-the-upload-card-prominently-displayed-confidence-scores-must-be-rendered-as-animated-horizontal-bars-with-genre-labels",
+      "title": "Apply a bold, dark-themed visual design to the frontend. Use a dark charcoal/near-black background, vivid amber/gold accent color for interactive elements and genre result highlights, clean sans-serif typography, and audio waveform or equalizer-inspired decorative elements. The layout must be responsive and centered, with the upload card prominently displayed. Confidence scores must be rendered as animated horizontal bars with genre labels.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-existing-backend-api-call-in-genreclassifier-tsx-with-a-fully-client-side-genre-classification-pipeline-when-the-user-uploads-an-audio-file-mp3-wav-ogg-decode-and-analyze-it-in-the-browser-using-the-web-audio-api-audiocontext-to-extract-mfcc-and-spectral-features-run-inference-with-tensorflow-js-using-a-pre-trained-gtzan-style-genre-classification-model-loaded-from-a-public-cdn-or-bundled-weights-and-display-the-predicted-genre-and-per-genre-confidence-scores-all-without-any-server-round-trip",
+      "title": "Replace the existing backend API call in GenreClassifier.tsx with a fully client-side genre classification pipeline. When the user uploads an audio file (MP3, WAV, OGG), decode and analyze it in the browser using the Web Audio API (AudioContext) to extract MFCC and spectral features, run inference with TensorFlow.js using a pre-trained GTZAN-style genre classification model loaded from a public CDN or bundled weights, and display the predicted genre and per-genre confidence scores — all without any server round-trip.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-stub-out-the-dependency-on-the-icp-backend-actor-useactor-hook-inside-genreclassifier-tsx-so-the-page-no-longer-attempts-to-connect-to-a-backend-canister-for-prediction-the-audio-upload-analysis-and-result-display-flow-must-be-self-contained-in-the-frontend",
+      "title": "Remove or stub out the dependency on the ICP backend actor (useActor hook) inside GenreClassifier.tsx so the page no longer attempts to connect to a backend canister for prediction. The audio upload, analysis, and result display flow must be self-contained in the frontend.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Audio file upload UI that connects to backend API",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Trained ML model for music genre classification with feature extraction (e.g., MFCC, spectral features)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Audio preprocessing pipeline (normalization, segmentation, feature extraction)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Model evaluation metrics display (accuracy, confusion matrix, etc.)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Sample prediction test script included with the app",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Perform genre classification entirely client-side in the browser using a JS/WASM ML model (e.g., TensorFlow.js or ONNX.js), no backend server required",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Music Genre Classifier",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

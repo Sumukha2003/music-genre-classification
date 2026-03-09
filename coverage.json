@@ -1,0 +1,55 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-02T05:16:06.702Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-8",
+        "summary": "Replace the existing backend API call in GenreClassifier.tsx with a fully client-side genre classification pipeline. When the user uploads an audio file (MP3, WAV, OGG), decode and analyze it in the browser using the Web Audio API (AudioContext) to extract MFCC and spectral features, run inference with TensorFlow.js using a pre-trained GTZAN-style genre classification model loaded from a public CDN or bundled weights, and display the predicted genre and per-genre confidence scores — all without any server round-trip.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/audioFeatureExtractor.ts",
+          "frontend/src/utils/genreModel.ts",
+          "frontend/src/pages/GenreClassifier.tsx",
+          "frontend/package.json"
+        ],
+        "matchedFiles": [
+          "frontend/src/utils/audioFeatureExtractor.ts",
+          "frontend/src/pages/GenreClassifier.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Remove or stub out the dependency on the ICP backend actor (useActor hook) inside GenreClassifier.tsx so the page no longer attempts to connect to a backend canister for prediction. The audio upload, analysis, and result display flow must be self-contained in the frontend.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/GenreClassifier.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/GenreClassifier.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/pages/GenreClassifier.tsx",
+    "frontend/src/utils/audioFeatureExtractor.ts",
+    "frontend/src/utils/genreClassifier.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-02T05:16:06.699Z",
+  "summary": "The diff implements client-side audio feature extraction and genre classification, removing the backend actor dependency from GenreClassifier.tsx. However, REQ-8 explicitly requires TensorFlow.js inference with a pre-trained GTZAN-style model loaded from a CDN or bundled weights. Instead, the implementation uses a purely rule-based scoring system with no TensorFlow.js or neural network model, which fails that specific acceptance criterion. REQ-9 appears fully satisfied.",
+  "missing_requirements": [
+    {
+      "id": "REQ-8",
+      "requirement": "Run inference with TensorFlow.js using a pre-trained GTZAN-style genre classification model loaded from a public CDN or bundled weights.",
+      "reason": "The diff introduces genreClassifier.ts which uses a hand-crafted rule-based scoring system with softmax normalization and pseudo-noise. There is no TensorFlow.js import, no model loading from a CDN or bundled weights, and no neural network inference. The acceptance criterion 'A TensorFlow.js model is loaded client-side and produces genre prediction results' is not met.",
+      "evidence": [
+        "frontend/src/utils/genreClassifier.ts",
+        "frontend/src/pages/GenreClassifier.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Rule-based genre scoring system with pseudo-noise injection instead of TensorFlow.js model inference",
+      "reason": "The build request explicitly requires TensorFlow.js with a pre-trained model. The diff instead implements a deterministic rule-based classifier with sigmoid/softmax scoring and synthetic noise to simulate variability, which was not requested and contradicts the specified approach.",
+      "evidence": [
+        "frontend/src/utils/genreClassifier.ts"
+      ]
+    }
+  ],
+  "confidence": 0.92,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/pages/GenreClassifier.tsx",
+    "frontend/src/utils/audioFeatureExtractor.ts",
+    "frontend/src/utils/genreClassifier.ts",
+    "project_state.json"
+  ]
+}
